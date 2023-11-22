@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ITodo, TodoStatus } from './todos.interface';
 
-
 @Injectable({
   providedIn: 'root'
 })

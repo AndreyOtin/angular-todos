@@ -15,12 +15,9 @@ type NewTodo = Omit<ITodo, 'id' | 'status'> & { status: TodoStatus & '' };
   styleUrl: './create-to-do.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CreateToDoComponent implements OnInit {
+export class CreateToDoComponent {
   newTodo: Omit<ITodo, 'id'> = { status: '' } as NewTodo;
   @Output() addNewTodo = new EventEmitter<Omit<ITodo, 'id'>>();
-
-  ngOnInit() {
-  }
 
   handleSubmit() {
     if (Object.values(this.newTodo).length !== 3 || !this.newTodo.status) {

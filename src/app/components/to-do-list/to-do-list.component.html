@@ -9,7 +9,7 @@
           <app-to-do-item
             (deleteTodo)='deleteTodo($event)'
             (changeStatus)='changeTodoStatus($event)'
-            *ngFor='let todo of entry[1]'
+            *ngFor='let todo of entry[1]; trackBy: trackTodos'
             [todo]='todo' />
         </ul>
       </div>

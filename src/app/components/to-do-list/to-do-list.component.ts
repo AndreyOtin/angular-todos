@@ -23,6 +23,10 @@ export class ToDoListComponent {
     this.todoEntries = this.transformTodos(this.todoService.todos);
   }
 
+  trackTodos(_: number, item: ITodo) {
+    return item.id;
+  }
+
   trackEntries(_: number, item: [TodoStatus, ITodo[]]) {
     return item[0];
   }
