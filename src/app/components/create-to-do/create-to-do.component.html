@@ -1,0 +1,18 @@
+<form (submit)='handleSubmit()' class='form' action='#'>
+  <h2 class='title'>Создать тудушку</h2>
+  <div class='form-group'>
+    <label class='input-title' for='title'> Название </label>
+    <input type='text' id='title' name='title' [(ngModel)]='newTodo.title'>
+  </div>
+  <div class='form-group'>
+    <label class='input-title' for='description'> Описание </label>
+    <input type='text' id='description' name='description' [(ngModel)]='newTodo.description'>
+  </div>
+  <div class='form-group'>
+    <select name='status' [(ngModel)]='newTodo.status' required>
+      <option disabled selected>Выберите статус</option>
+      <option *ngFor='let status of statuses' [value]='status'>{{transformStatus(status)}}</option>
+    </select>
+  </div>
+  <button>Создать</button>
+</form>

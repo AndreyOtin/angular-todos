@@ -1,0 +1,22 @@
+.form {
+  border: 1px solid black;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.form-group {
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  label {
+    margin-bottom: 5px;
+    display: block;
+  }
+
+  input {
+    width: 100%;
+  }
+
+
+}

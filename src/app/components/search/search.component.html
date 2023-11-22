@@ -1,0 +1,17 @@
+<form (submit)='handleSubmit()' class='form' action='#'>
+  <h2 class='title'>Найти тудушку</h2>
+  <div class='form-group'>
+    <label class='input-title' for='title'> Название </label>
+    <input type='text' id='title' name='title' [(ngModel)]='search'>
+  </div>
+  <div class='form-group'>
+    <select name='status' [(ngModel)]='status' required>
+      <option disabled selected>Выберите статус</option>
+      <option *ngFor='let status of statuses' [value]='status'>{{transformStatus(status)}}</option>
+    </select>
+  </div>
+  <div class='button-group'>
+    <button>Найти</button>
+    <button (click)='handleReset()' type='reset'>Сбросить</button>
+  </div>
+</form>

@@ -1,0 +1,52 @@
+h1, h2, h3 {
+  text-align: center;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.column {
+  border: 1px solid black;
+}
+
+.todos {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+  margin-bottom: 10px;
+  min-width: 405px;
+}
+
+.column {
+  padding: 5px;
+}
+
+.main-title {
+  margin-bottom: 10px;
+}
+
+.todo-title {
+
+  &.default {
+    background-color: grey;
+  }
+
+  &.important {
+    background-color: red;
+  }
+
+  &.done {
+    background-color: green;
+  }
+}
+
+.empty-todos{
+  text-align: center;
+  font-weight: 700;
+  flex: 1;
+  border: 1px solid black;
+}
