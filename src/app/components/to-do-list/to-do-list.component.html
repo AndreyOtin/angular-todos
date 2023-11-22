@@ -6,7 +6,11 @@
       <div class='column' *ngFor='let entry of todoEntries; trackBy: trackEntries'>
         <h3 class='todo-title' [ngClass]='entry[0]'>{{transformStatus(entry[0])}}</h3>
         <ul class='list'>
-          <app-to-do-item *ngFor='let todo of entry[1]' [todo]='todo'></app-to-do-item>
+          <app-to-do-item
+            (deleteTodo)='deleteTodo($event)'
+            (changeStatus)='changeTodoStatus($event)'
+            *ngFor='let todo of entry[1]'
+            [todo]='todo' />
         </ul>
       </div>
     </div>
@@ -18,5 +22,8 @@
     </ng-template>
 
     <app-create-to-do (addNewTodo)='addNewTodo($event)'></app-create-to-do>
-    <app-search (findTodo)='filterTodos($event)' (resetSearch)='resetTodos()'></app-search>
+    <app-search
+      (findTodo)='filterTodos($event)'
+      (resetSearch)='resetTodos()' />
   </div>
+</div>

@@ -1,4 +1,4 @@
 <div class='form-group'>
   <label class='input-title' [for]='name'> {{title}} </label>
-  <input type='text' [id]='name' [name]='name' [ngModel]='value' (ngModelChange)='valueChange.emit($event)'>
+  <input type='text' [id]='name' [name]='name' [ngModel]='value' (ngModelChange)='handleChange($event)'>
 </div>

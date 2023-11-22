@@ -1,7 +1,7 @@
 <form (submit)='handleSubmit()' class='form vars' action='#'>
   <h2 class='title'>Создать тудушку</h2>
-  <app-input name='title' title='Название' [(value)]='newTodo.title' />
-  <app-input name='description' title='Описание' [(value)]='newTodo.description' />
-  <app-select [(status)]='newTodo.status' />
+  <app-input name='title' title='Название' [(value)]='newTodo.title' style='--margin-bottom: 10px' />
+  <app-input name='description' title='Описание' [(value)]='newTodo.description' style='--margin-bottom: 10px' />
+  <app-select [(status)]='newTodo.status' style='--margin-bottom: 10px' />
   <button>Создать</button>
 </form>

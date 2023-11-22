@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ToDoItemComponent } from '../to-do-item/to-do-item.component';
 import { TodosService } from '../../services/todos/todos.service';
@@ -14,14 +14,12 @@ import { SearchComponent } from '../search/search.component';
   templateUrl: './to-do-list.component.html',
   styleUrl: './to-do-list.component.scss'
 })
-export class ToDoListComponent implements OnInit {
+export class ToDoListComponent {
   todoEntries: [TodoStatus, ITodo[]][];
+  @ViewChild(SearchComponent) searchComponent!: SearchComponent;
 
   constructor(private todoService: TodosService) {
     this.todoEntries = this.transformTodos(this.todoService.todos);
-  }
-
-  ngOnInit() {
   }
 
   trackEntries(_: number, item: [TodoStatus, ITodo[]]) {
@@ -32,16 +30,26 @@ export class ToDoListComponent implements OnInit {
     return statusToNameMap[status];
   }
 
+  changeTodoStatus({ status, id }: { status: TodoStatus, id: string }) {
+    this.todoService.updateTodo(id, status);
+    this.todoEntries = this.transformTodos(this.todoService.todos);
+  }
+
+  deleteTodo(id: string) {
+    this.todoService.deleteTodo(id);
+    this.searchComponent.handleReset();
+  }
+
   resetTodos() {
     this.todoEntries = this.transformTodos(this.todoService.todos);
   }
 
   addNewTodo(todo: Omit<ITodo, 'id'>) {
     this.todoService.addTodo(todo);
-    this.todoEntries = this.transformTodos(this.todoService.todos);
+    this.searchComponent.handleReset();
   }
 
-  filterTodos({ status, title }: { title: string, status: TodoStatus | string }) {
+  filterTodos({ status, title }: { title: string, status: TodoStatus | '' }) {
     const todos = this.todoService.todos.filter(t => {
       if (status && title) {
         return status === t.status && t.title.toLowerCase().includes(title.toLowerCase());
@@ -62,7 +70,7 @@ export class ToDoListComponent implements OnInit {
   }
 
   private transformTodos(todos: ITodo[]) {
-    const todoEntries = Object.entries(todos.reduce((acc, item) => {
+    const todoEntries = Object.entries(structuredClone(todos).reduce((acc, item) => {
       if (acc[item.status]) {
         acc[item.status].push(item);
       } else {

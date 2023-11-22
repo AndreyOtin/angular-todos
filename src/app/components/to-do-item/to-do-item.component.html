@@ -1,4 +1,6 @@
-<li class="todo">
-  <h3 class="title">{{todo?.title}}</h3>
-  <p class="description">{{todo?.description}}</p>
+<li class='todo'>
+  <h3 class='title'>{{todo?.title}}</h3>
+  <p class='description'>{{todo?.description}}</p>
+  <button (click)='handleDeleteClick()'>Удалить</button>
+  <app-select title='Изменить статус' [(status)]='status' (statusChange)='handleStatusChange($event)' />
 </li>

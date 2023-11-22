@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { SelectComponent } from '../select/select.component';
 import { InputComponent } from '../input/input.component';
 
+type NewTodo = Omit<ITodo, 'id' | 'status'> & { status: TodoStatus & '' };
+
 @Component({
   selector: 'app-create-to-do',
   standalone: true,
@@ -13,18 +15,18 @@ import { InputComponent } from '../input/input.component';
   styleUrl: './create-to-do.component.scss'
 })
 export class CreateToDoComponent implements OnInit {
-  newTodo: Omit<ITodo, 'id'> = {status: ''} as Omit<ITodo, 'id' | 'status'> & {status: TodoStatus & ''};
+  newTodo: Omit<ITodo, 'id'> = { status: '' } as NewTodo;
   @Output() addNewTodo = new EventEmitter<Omit<ITodo, 'id'>>();
 
   ngOnInit() {
   }
 
   handleSubmit() {
-    if (Object.values(this.newTodo).length !== 3) {
+    if (Object.values(this.newTodo).length !== 3 || !this.newTodo.status) {
       return;
     }
 
     this.addNewTodo.emit(this.newTodo);
-    this.newTodo = {} as Omit<ITodo, 'id'>;
+    this.newTodo = { status: '' } as NewTodo;
   }
 }

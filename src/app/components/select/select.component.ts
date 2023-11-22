@@ -14,9 +14,15 @@ import { statusToNameMap } from '../../../consts/common';
 export class SelectComponent {
   statuses: TodoStatus[] = ['default', 'important', 'done'];
   @Input() status: TodoStatus | '' = '';
-  @Output() statusChange = new EventEmitter<TodoStatus>()
+  @Output() statusChange = new EventEmitter<TodoStatus>();
+  @Input() title: string = 'Выберите статус';
 
   transformStatus(status: TodoStatus) {
     return statusToNameMap[status];
+  }
+
+  handleChange(status: TodoStatus) {
+    this.statusChange.emit(status);
+    this.status = status;
   }
 }

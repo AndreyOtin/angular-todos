@@ -14,4 +14,9 @@ export class InputComponent {
   @Input({ required: true }) title: string = '';
   @Input() value: string = '';
   @Output() valueChange = new EventEmitter<string>();
+
+  handleChange(text: string) {
+    this.valueChange.emit(text);
+    this.value = text;
+  }
 }

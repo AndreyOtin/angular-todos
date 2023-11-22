@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TodoStatus } from '../../services/todos/todos.interface';
@@ -10,12 +10,13 @@ import { InputComponent } from '../input/input.component';
   standalone: true,
   imports: [CommonModule, FormsModule, SelectComponent, InputComponent],
   templateUrl: './search.component.html',
-  styleUrl: './search.component.scss'
+  styleUrl: './search.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SearchComponent {
-  search = '';
-  status: TodoStatus | '' = '';
-  @Output() findTodo = new EventEmitter<{ title: string; status: TodoStatus | string }>();
+  @Input() search = '';
+  @Input() status: TodoStatus | '' = '';
+  @Output() findTodo = new EventEmitter<{ title: string; status: TodoStatus | '' }>();
   @Output() resetSearch = new EventEmitter();
 
   handleSubmit() {
@@ -24,5 +25,7 @@ export class SearchComponent {
 
   handleReset() {
     this.resetSearch.emit();
+    this.search = '';
+    this.status = '';
   }
 }
