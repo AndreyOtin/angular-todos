@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ITodo, TodoStatus } from '../../services/todos/todos.interface';
 import { SelectComponent } from '../select/select.component';
@@ -8,7 +8,8 @@ import { SelectComponent } from '../select/select.component';
   standalone: true,
   imports: [CommonModule, SelectComponent],
   templateUrl: './to-do-item.component.html',
-  styleUrl: './to-do-item.component.scss'
+  styleUrl: './to-do-item.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class ToDoItemComponent {

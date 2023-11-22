@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TodoStatus } from '../../services/todos/todos.interface';
@@ -9,7 +9,8 @@ import { statusToNameMap } from '../../../consts/common';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './select.component.html',
-  styleUrl: './select.component.scss'
+  styleUrl: './select.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SelectComponent {
   statuses: TodoStatus[] = ['default', 'important', 'done'];

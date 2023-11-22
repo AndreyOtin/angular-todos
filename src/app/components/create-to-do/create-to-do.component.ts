@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ITodo, TodoStatus } from '../../services/todos/todos.interface';
 import { FormsModule } from '@angular/forms';
@@ -12,7 +12,8 @@ type NewTodo = Omit<ITodo, 'id' | 'status'> & { status: TodoStatus & '' };
   standalone: true,
   imports: [CommonModule, FormsModule, SelectComponent, InputComponent],
   templateUrl: './create-to-do.component.html',
-  styleUrl: './create-to-do.component.scss'
+  styleUrl: './create-to-do.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CreateToDoComponent implements OnInit {
   newTodo: Omit<ITodo, 'id'> = { status: '' } as NewTodo;

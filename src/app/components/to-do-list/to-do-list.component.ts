@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ToDoItemComponent } from '../to-do-item/to-do-item.component';
 import { TodosService } from '../../services/todos/todos.service';
@@ -12,7 +12,8 @@ import { SearchComponent } from '../search/search.component';
   standalone: true,
   imports: [CommonModule, ToDoItemComponent, CreateToDoComponent, SearchComponent],
   templateUrl: './to-do-list.component.html',
-  styleUrl: './to-do-list.component.scss'
+  styleUrl: './to-do-list.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ToDoListComponent {
   todoEntries: [TodoStatus, ITodo[]][];
