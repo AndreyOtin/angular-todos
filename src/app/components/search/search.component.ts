@@ -2,19 +2,19 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TodoStatus } from '../../services/todos/todos.interface';
-import { statusToNameMap } from '../../../consts/common';
+import { SelectComponent } from '../select/select.component';
+import { InputComponent } from '../input/input.component';
 
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, SelectComponent, InputComponent],
   templateUrl: './search.component.html',
   styleUrl: './search.component.scss'
 })
 export class SearchComponent {
-  statuses: TodoStatus[] = ['default', 'important', 'done'];
   search = '';
-  status = '';
+  status: TodoStatus | '' = '';
   @Output() findTodo = new EventEmitter<{ title: string; status: TodoStatus | string }>();
   @Output() resetSearch = new EventEmitter();
 
@@ -24,9 +24,5 @@ export class SearchComponent {
 
   handleReset() {
     this.resetSearch.emit();
-  }
-
-  transformStatus(status: TodoStatus) {
-    return statusToNameMap[status];
   }
 }

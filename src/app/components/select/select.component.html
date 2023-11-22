@@ -1,0 +1,6 @@
+<div class='form-group'>
+  <select name='status' [ngModel]='status' (ngModelChange)='statusChange.emit($event)'>
+    <option disabled value=''>Выберите статус</option>
+    <option *ngFor='let status of statuses' [value]='status'>{{transformStatus(status)}}</option>
+  </select>
+</div>

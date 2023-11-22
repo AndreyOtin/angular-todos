@@ -4,19 +4,10 @@
   margin-bottom: 10px;
 }
 
-.form-group {
-  &:not(:last-child) {
-    margin-bottom: 10px;
-  }
+.vars {
+  --margin-bottom: 10px
+}
 
-  label {
-    margin-bottom: 5px;
-    display: block;
-  }
-
-  input {
-    width: 100%;
-  }
-
+.test{
 
 }

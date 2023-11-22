@@ -1,0 +1,16 @@
+.form-group {
+  margin-bottom: var(--margin-bottom);
+
+  .test & {
+    margin-bottom: 100px;
+  }
+
+  label {
+    margin-bottom: 5px;
+    display: block;
+  }
+
+  input {
+    width: 100%;
+  }
+}
