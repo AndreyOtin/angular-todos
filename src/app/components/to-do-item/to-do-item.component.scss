@@ -1,5 +1,43 @@
 .todo{
   display: flex;
   flex-direction: column;
+
   gap: 10px;
+  padding: 5px;
+  border: 1px solid transparent;
+  min-width: 200px;
+
+  &.default{
+    border-color: grey;
+  }
+
+  &.done{
+    border-color: green;
+  }
+
+  &.important{
+    border-color: red;
+  }
+}
+
+.title{
+  text-align: center;
+  border-bottom: 1px dashed grey;
+  padding-bottom: 5px;
+}
+
+.description{
+  min-height: 100px;
+  padding: 10px;
+  border-radius: 5px;
+
+  .default &{
+    background-color: fade-out(grey, 0.9)
+  }
+  .done &{
+    background-color: fade-out(green, 0.9)
+  }
+  .important &{
+    background-color: fade-out(red, 0.9)
+  }
 }

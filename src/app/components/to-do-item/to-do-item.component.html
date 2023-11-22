@@ -1,4 +1,4 @@
-<li class='todo'>
+<li class='todo' [ngClass]='todo?.status'>
   <h3 class='title'>{{todo?.title}}</h3>
   <p class='description'>{{todo?.description}}</p>
   <button (click)='handleDeleteClick()'>Удалить</button>

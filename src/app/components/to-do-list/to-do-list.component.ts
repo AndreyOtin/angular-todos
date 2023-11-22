@@ -45,7 +45,7 @@ export class ToDoListComponent {
     this.searchComponent.handleReset();
   }
 
-  resetTodos() {
+  resetSearch() {
     this.todoEntries = this.transformTodos(this.todoService.todos);
   }
 
@@ -75,7 +75,7 @@ export class ToDoListComponent {
   }
 
   private transformTodos(todos: ITodo[]) {
-    const todoEntries = Object.entries(structuredClone(todos).reduce((acc, item) => {
+    const todoEntries = Object.entries(todos.reduce((acc, item) => {
       if (acc[item.status]) {
         acc[item.status].push(item);
       } else {
